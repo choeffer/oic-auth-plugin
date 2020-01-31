@@ -561,7 +561,8 @@ public class OicSecurityRealm extends SecurityRealm {
                     LOGGER.fine("Group content is: " + getField(userInfo, groupsFieldName));
                     @SuppressWarnings("unchecked")
                     String tmpStr = (String) getField(userInfo, groupsFieldName);
-                    List<String> groupNames = Arrays.asList(tmpStr.split("\\s*,\\s*"));
+                    List<String> groupNames = new ArrayList<String>(Arrays.asList(tmpStr.split(" , ")));
+                    //List<String> groupNames = Arrays.asList(tmpStr.split("\\s*,\\s*"));
                     //List<String> groupNames = (List<String>) getField(userInfo, groupsFieldName);
                     LOGGER.fine("Number of groups in groupNames: " + groupNames.size());
                     for (String groupName : groupNames) {
